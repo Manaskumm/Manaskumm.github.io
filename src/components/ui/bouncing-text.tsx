@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 export function BouncingText() {
     const containerRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
-    const requestRef = useRef<number>();
+    const requestRef = useRef<number | null>(null);
 
     // State for physics
     const position = useRef({ x: 50, y: 50 });
