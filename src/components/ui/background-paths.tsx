@@ -106,31 +106,54 @@ export function BackgroundPaths({
                         Computer Science & Economics Student
                     </motion.p>
 
-                    <div
-                        className="inline-block group relative bg-white/10 p-px rounded-2xl backdrop-blur-lg 
-                        overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
-                    >
-                        <Button
-                            variant="ghost"
-                            className="rounded-[1.15rem] px-8 py-6 text-lg font-semibold backdrop-blur-md 
-                            bg-black/50 hover:bg-black/70 
-                            text-white transition-all duration-300 
-                            group-hover:-translate-y-0.5 border border-white/10
-                            hover:shadow-md hover:shadow-neutral-800/50"
-                            asChild
+                    <div className="flex flex-wrap gap-4 justify-center">
+                        <div
+                            className="inline-block group relative bg-white/10 p-px rounded-2xl backdrop-blur-lg 
+                            overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
                         >
-                            <a href="#projects">
-                                <span className="opacity-90 group-hover:opacity-100 transition-opacity">
-                                    View Work
-                                </span>
-                                <span
-                                    className="ml-3 opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 
-                                    transition-all duration-300"
-                                >
-                                    →
-                                </span>
-                            </a>
-                        </Button>
+                            <Button
+                                variant="ghost"
+                                className="rounded-[1.15rem] px-8 py-6 text-lg font-semibold backdrop-blur-md 
+                                bg-black/50 hover:bg-black/70 
+                                text-white transition-all duration-300 
+                                group-hover:-translate-y-0.5 border border-white/10
+                                hover:shadow-md hover:shadow-neutral-800/50"
+                                asChild
+                            >
+                                <a href="#projects">
+                                    <span className="opacity-90 group-hover:opacity-100 transition-opacity">
+                                        View Work
+                                    </span>
+                                    <span
+                                        className="ml-3 opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 
+                                        transition-all duration-300"
+                                    >
+                                        →
+                                    </span>
+                                </a>
+                            </Button>
+                        </div>
+
+                        <div
+                            className="inline-block group relative bg-white/10 p-px rounded-2xl backdrop-blur-lg 
+                            overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                        >
+                            <Button
+                                variant="ghost"
+                                className="rounded-[1.15rem] px-8 py-6 text-lg font-semibold backdrop-blur-md 
+                                bg-primary/20 hover:bg-primary/40 
+                                text-white transition-all duration-300 
+                                group-hover:-translate-y-0.5 border border-primary/30
+                                hover:shadow-md hover:shadow-primary/20"
+                                asChild
+                            >
+                                <a href="/resume.docx" download>
+                                    <span className="opacity-90 group-hover:opacity-100 transition-opacity">
+                                        Download Resume
+                                    </span>
+                                </a>
+                            </Button>
+                        </div>
                     </div>
                 </motion.div>
             </div>
