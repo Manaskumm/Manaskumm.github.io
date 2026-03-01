@@ -6,22 +6,10 @@ import { GraduationCap, FolderGit2 } from "lucide-react";
 export function About() {
     return (
         <section className="py-24 relative" id="about">
-            <div className="container mx-auto px-4 grid lg:grid-cols-[0.8fr_1fr] gap-12 items-center">
+            <div className="container mx-auto px-4 max-w-4xl">
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative"
-                >
-                    <div className="aspect-[4/5] bg-card rounded-2xl overflow-hidden flex items-center justify-center border border-white/10">
-                        <span className="text-9xl font-bold text-muted">MK</span>
-                    </div>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >

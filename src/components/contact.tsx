@@ -24,17 +24,16 @@ export function Contact() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                    action="https://formsubmit.co/manaskumm@gmail.com"
-                    method="POST"
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        const formData = new FormData(e.currentTarget);
+                        const name = formData.get("name");
+                        const subject = formData.get("subject");
+                        const message = formData.get("message");
+                        window.location.href = `mailto:manaskumm@gmail.com?subject=${encodeURIComponent(subject as string)}&body=${encodeURIComponent(`Hi, my name is ${name}.\n\n${message}`)}`;
+                    }}
                     className="max-w-2xl mx-auto space-y-6"
                 >
-                    {/* Honeypot */}
-                    <input type="text" name="_honey" style={{ display: "none" }} />
-                    {/* Disable Captcha */}
-                    <input type="hidden" name="_captcha" value="false" />
-                    {/* Success Page */}
-                    <input type="hidden" name="_next" value="https://manaskumm.github.io/portfolio/" />
-
                     <div className="grid md:grid-cols-2 gap-6">
                         <input
                             type="text"
@@ -53,7 +52,7 @@ export function Contact() {
                     </div>
                     <input
                         type="text"
-                        name="_subject"
+                        name="subject"
                         placeholder="Subject"
                         required
                         className="w-full bg-card border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors"

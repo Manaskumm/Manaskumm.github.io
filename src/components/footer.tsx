@@ -17,7 +17,9 @@ export function Footer() {
                         <Github size={20} />
                     </a>
                     <a
-                        href="#"
+                        href="https://www.linkedin.com/in/manas-kumm/"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-muted-foreground hover:text-primary transition-colors"
                     >
                         <Linkedin size={20} />
