@@ -1,52 +1,58 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { GraduationCap, FolderGit2 } from "lucide-react";
-
 export function About() {
     return (
-        <section className="py-24 relative" id="about">
-            <div className="container mx-auto px-4 max-w-4xl">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <p className="text-primary text-lg font-medium mb-2">About Me</p>
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                        Driven by <span className="text-primary">innovation</span> and data.
-                    </h2>
-                    <div className="space-y-4 text-muted-foreground text-lg mb-8">
-                        <p>
-                            I am currently pursuing a double major in Computer Science and
-                            Economics at Rutgers University (Class of 2028). I have a passion for
-                            full-stack development, machine learning, and financial modeling.
-                        </p>
-                        <p>
-                            My experience ranges from developing secure browser extensions to
-                            building predictive models for financial markets. I was a Program
-                            Assistant at Rutgers Math Corps, helping students succeed.
-                        </p>
-                    </div>
+        <section id="about">
+            <h3 style={{ color: '#aaa', marginBottom: '16px' }}>Education</h3>
+            <div style={{ marginBottom: '20px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+                    <strong>Rutgers University</strong>
+                    <span>New Brunswick, NJ</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', fontStyle: 'italic', color: '#aaa' }}>
+                    <span>B.S in Computer Science & B.A in Economics</span>
+                    <span>Sep 2024 - May 2028</span>
+                </div>
+                <p style={{ marginTop: '8px' }}>GPA: 3.6 / 4.0</p>
+                <p style={{ color: '#aaa', marginTop: '4px' }}>
+                    Relevant Coursework: Calculus I, Calculus II, Linear Algebra, Intro to Computer Science, Data Structures, Computer Architecture, Discrete I, Microeconomics, Macroeconomics
+                </p>
+            </div>
 
-                    <div className="grid sm:grid-cols-2 gap-6">
-                        <div className="p-6 border border-white/10 rounded-xl hover:border-primary/50 transition-colors group">
-                            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
-                                <GraduationCap size={24} />
-                            </div>
-                            <h3 className="text-xl font-semibold mb-1">Education</h3>
-                            <p className="text-muted-foreground">Rutgers '28</p>
-                        </div>
-                        <div className="p-6 border border-white/10 rounded-xl hover:border-primary/50 transition-colors group">
-                            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
-                                <FolderGit2 size={24} />
-                            </div>
-                            <h3 className="text-xl font-semibold mb-1">Projects</h3>
-                            <p className="text-muted-foreground">3 Completed</p>
-                        </div>
-                    </div>
-                </motion.div>
+            <h3 style={{ color: '#aaa', marginBottom: '16px', marginTop: '24px' }}>Experience</h3>
+
+            <div style={{ marginBottom: '20px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+                    <strong>Langpal</strong>
+                    <span>Remote</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', fontStyle: 'italic', color: '#aaa' }}>
+                    <span>Web Developer Intern</span>
+                    <span>Feb 2026 - Present</span>
+                </div>
+                <ul style={{ marginTop: '8px', paddingLeft: '20px', lineHeight: '1.8' }}>
+                    <li>Built and maintained full-stack features using React and Next.js, contributing to both frontend UI components and backend API endpoints.</li>
+                    <li>Designed and implemented responsive, accessible web pages that improved cross-device user experience.</li>
+                    <li>Integrated RESTful APIs to enable dynamic data rendering and seamless client-server communication.</li>
+                    <li>Collaborated with team members in an agile environment, participating in code reviews and iterative development cycles to ship features on schedule.</li>
+                </ul>
+            </div>
+
+            <div style={{ marginBottom: '20px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+                    <strong>Rutgers Math Corps</strong>
+                    <span>New Brunswick, NJ</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', fontStyle: 'italic', color: '#aaa' }}>
+                    <span>Program Assistant</span>
+                    <span>July 2025 - August 2025</span>
+                </div>
+                <ul style={{ marginTop: '8px', paddingLeft: '20px', lineHeight: '1.8' }}>
+                    <li>Assisted students with educational assignments and provided constructive feedback.</li>
+                    <li>Facilitated program operations and maintained a smoothly running learning environment.</li>
+                    <li>Managed orders of food and supplies for use of over 300 people.</li>
+                    <li>Ensured a supportive learning environment to enhance student confidence and comprehension.</li>
+                </ul>
             </div>
         </section>
     );
