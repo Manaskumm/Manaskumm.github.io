@@ -111,7 +111,7 @@ export default function Home() {
       {/* Click sound */}
       <audio
         ref={clickSoundRef}
-        src="https://cdn.discordapp.com/attachments/639163306749198356/681612670016815134/minecraft_click-AudioTrimmer.com.mp3"
+        src="/assets/sounds/click.mp3"
         preload="auto"
       />
 
