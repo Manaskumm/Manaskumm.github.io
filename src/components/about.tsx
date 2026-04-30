@@ -15,7 +15,7 @@ export function About() {
                 </div>
                 <p style={{ marginTop: '8px' }}>GPA: 3.6 / 4.0</p>
                 <p style={{ color: '#aaa', marginTop: '4px' }}>
-                    Relevant Coursework: Calculus I, Calculus II, Linear Algebra, Intro to Computer Science, Data Structures, Computer Architecture, Discrete I, Microeconomics, Macroeconomics
+                    Relevant Coursework: Calculus I, Calculus II, Linear Algebra, Intro to Computer Science, Data Structures, Computer Architecture, Discrete I, Discrete II, Microeconomics, Macroeconomics, Econometrics
                 </p>
             </div>
 
