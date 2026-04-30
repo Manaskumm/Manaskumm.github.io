@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { About } from '@/components/about'
 import { Projects } from '@/components/projects'
 import { Skills } from '@/components/skills'
@@ -16,14 +16,51 @@ const splashTexts = [
   "Hello World!",
 ]
 
+// Minecraft title screen music tracks (C418 - Volume Beta) from Archive.org
+const bgMusicTracks = [
+  'https://archive.org/download/Minecraftostvolumebeta/C418-Minecraft%20Soundtrack%20Volume%20Beta/09.%20Mutation.ogg',
+  'https://archive.org/download/Minecraftostvolumebeta/C418-Minecraft%20Soundtrack%20Volume%20Beta/06.%20Moog%20City%202.ogg',
+  'https://archive.org/download/Minecraftostvolumebeta/C418-Minecraft%20Soundtrack%20Volume%20Beta/17.%20Beginning%202.ogg',
+]
+
 export default function Home() {
   const [menuState, setMenuState] = useState<MenuState>('main')
   const [splash, setSplash] = useState('')
+  const [isMuted, setIsMuted] = useState(false)
+  const [musicStarted, setMusicStarted] = useState(false)
+
   const clickSoundRef = useRef<HTMLAudioElement | null>(null)
+  const bgMusicRef = useRef<HTMLAudioElement | null>(null)
+  const trackIndexRef = useRef(0)
 
   useEffect(() => {
     setSplash(splashTexts[Math.floor(Math.random() * splashTexts.length)])
+
+    // Shuffle track order on load
+    trackIndexRef.current = Math.floor(Math.random() * bgMusicTracks.length)
   }, [])
+
+  // Play the next track when the current one ends
+  const handleTrackEnd = useCallback(() => {
+    trackIndexRef.current = (trackIndexRef.current + 1) % bgMusicTracks.length
+    if (bgMusicRef.current) {
+      bgMusicRef.current.src = bgMusicTracks[trackIndexRef.current]
+      bgMusicRef.current.play().catch(() => {})
+    }
+  }, [])
+
+  // Start background music on first user interaction
+  const startMusic = useCallback(() => {
+    if (musicStarted) return
+    setMusicStarted(true)
+
+    const audio = bgMusicRef.current
+    if (audio) {
+      audio.src = bgMusicTracks[trackIndexRef.current]
+      audio.volume = 0.3
+      audio.play().catch(() => {})
+    }
+  }, [musicStarted])
 
   const playClick = () => {
     if (clickSoundRef.current) {
@@ -33,13 +70,25 @@ export default function Home() {
   }
 
   const handleBtn = (state: MenuState) => {
+    startMusic()
     playClick()
     setMenuState(state)
   }
 
   const handleBack = () => {
+    startMusic()
     playClick()
     setMenuState('main')
+  }
+
+  const toggleMute = () => {
+    startMusic()
+    playClick()
+    const newMuted = !isMuted
+    setIsMuted(newMuted)
+    if (bgMusicRef.current) {
+      bgMusicRef.current.muted = newMuted
+    }
   }
 
   const renderContent = () => {
@@ -66,8 +115,26 @@ export default function Home() {
         preload="auto"
       />
 
+      {/* Background music */}
+      <audio
+        ref={bgMusicRef}
+        onEnded={handleTrackEnd}
+        preload="none"
+      />
+
       {/* Panorama background - exact CodePen match */}
       <div className="backgroundMainMenu" />
+
+      {/* Music toggle button */}
+      <div
+        className="musicToggle"
+        onClick={toggleMute}
+        title={isMuted ? 'Unmute music' : 'Mute music'}
+      >
+        <div className="textBtn" style={{ padding: '6px 10px', fontSize: '12px' }}>
+          {isMuted ? '🔇 Music Off' : '🔊 Music On'}
+        </div>
+      </div>
 
       {menuState === 'main' ? (
         /* ====== MAIN MENU ====== */
@@ -105,6 +172,7 @@ export default function Home() {
               <div className="textBtn">Contact</div>
             </div>
             <div className="secondBtn" onClick={() => {
+              startMusic()
               playClick()
               window.open('https://github.com/Manaskumm', '_blank')
             }}>

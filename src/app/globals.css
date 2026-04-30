@@ -215,6 +215,26 @@ body {
   justify-content: center;
 }
 
+/* Music toggle button - bottom right */
+.musicToggle {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 100;
+  border: 2px solid #000;
+  box-shadow: inset -2px -2px #0006, inset 2px 2px #FFF7;
+  background: #999 url('https://i48.servimg.com/u/f48/18/06/99/75/bgbtn10.png');
+  background-size: cover;
+  color: #DDD;
+  cursor: pointer;
+  font-family: 'Minecraftia', monospace;
+}
+
+.musicToggle:hover .textBtn {
+  background-color: rgba(100, 100, 255, 0.45);
+  color: #ffff7c;
+}
+
 @layer base {
   * {
     @apply border-border;
