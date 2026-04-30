@@ -17,17 +17,18 @@ const splashTexts = [
 ]
 
 // Minecraft title screen music tracks (C418 - Volume Beta) from Archive.org
+// Using .mp3 for cross-browser compatibility (Safari doesn't support .ogg)
 const bgMusicTracks = [
-  'https://archive.org/download/Minecraftostvolumebeta/C418-Minecraft%20Soundtrack%20Volume%20Beta/09.%20Mutation.ogg',
-  'https://archive.org/download/Minecraftostvolumebeta/C418-Minecraft%20Soundtrack%20Volume%20Beta/06.%20Moog%20City%202.ogg',
-  'https://archive.org/download/Minecraftostvolumebeta/C418-Minecraft%20Soundtrack%20Volume%20Beta/17.%20Beginning%202.ogg',
+  'https://archive.org/download/Minecraftostvolumebeta/C418-Minecraft%20Soundtrack%20Volume%20Beta/09.%20Mutation.mp3',
+  'https://archive.org/download/Minecraftostvolumebeta/C418-Minecraft%20Soundtrack%20Volume%20Beta/06.%20Moog%20City%202.mp3',
+  'https://archive.org/download/Minecraftostvolumebeta/C418-Minecraft%20Soundtrack%20Volume%20Beta/17.%20Beginning%202.mp3',
 ]
 
 export default function Home() {
   const [menuState, setMenuState] = useState<MenuState>('main')
   const [splash, setSplash] = useState('')
   const [isMuted, setIsMuted] = useState(false)
-  const [musicStarted, setMusicStarted] = useState(false)
+  const musicStartedRef = useRef(false)
 
   const clickSoundRef = useRef<HTMLAudioElement | null>(null)
   const bgMusicRef = useRef<HTMLAudioElement | null>(null)
@@ -51,8 +52,8 @@ export default function Home() {
 
   // Start background music on first user interaction
   const startMusic = useCallback(() => {
-    if (musicStarted) return
-    setMusicStarted(true)
+    if (musicStartedRef.current) return
+    musicStartedRef.current = true
 
     const audio = bgMusicRef.current
     if (audio) {
@@ -60,11 +61,11 @@ export default function Home() {
       audio.volume = 0.3
       audio.play().catch(() => {})
     }
-  }, [musicStarted])
+  }, [])
 
   const playClick = () => {
     if (clickSoundRef.current) {
-      clickSoundRef.current.currentTime = 0
+      clickSoundRef.current.currentTime = 0.3 // skip initial silence
       clickSoundRef.current.play().catch(() => {})
     }
   }
