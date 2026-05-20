@@ -7,11 +7,15 @@ const skillCategories = [
     },
     {
         title: "Technologies",
-        skills: ["Git", "React", "React Native", "Next.js", "SQL/PostgreSQL", "Linux", "Supabase", "Vercel"],
+        skills: ["Git", "React", "React Native", "Next.js", "Node.js", "TypeScript", "SQL/PostgreSQL", "Prisma", "Linux", "Supabase", "Vercel", "Framer Motion"],
+    },
+    {
+        title: "AI & Data",
+        skills: ["Groq", "Gemini", "RAG", "NLP Lead Scoring", "SerpAPI", "Apollo", "Clay", "scikit-learn", "pandas", "matplotlib", "yfinance"],
     },
     {
         title: "Activities",
-        skills: ["Undergraduate Student Alliance of Computer Scientists (USACS)", "Blueprint at Rutgers"],
+        skills: ["Member of Undergraduate Student Alliance of Computer Scientists (USACS)", "Blueprint at Rutgers"],
     },
 ];
 

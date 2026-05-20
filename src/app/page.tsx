@@ -11,8 +11,10 @@ type MenuState = 'main' | 'about' | 'projects' | 'skills' | 'contact'
 const splashTexts = [
   "Available for hire!",
   "Full-stack developer!",
+  "AI-native engineer!",
   "Rutgers '28!",
   "CS + Econ!",
+  "Building Venture AI!",
   "Hello World!",
 ]
 
@@ -35,10 +37,14 @@ export default function Home() {
   const trackIndexRef = useRef(0)
 
   useEffect(() => {
-    setSplash(splashTexts[Math.floor(Math.random() * splashTexts.length)])
+    const splashFrame = requestAnimationFrame(() => {
+      setSplash(splashTexts[Math.floor(Math.random() * splashTexts.length)])
+    })
 
     // Shuffle track order on load
     trackIndexRef.current = Math.floor(Math.random() * bgMusicTracks.length)
+
+    return () => cancelAnimationFrame(splashFrame)
   }, [])
 
   // Play the next track when the current one ends
@@ -178,6 +184,13 @@ export default function Home() {
               window.open('https://github.com/Manaskumm', '_blank')
             }}>
               <div className="textBtn">GitHub</div>
+            </div>
+            <div className="secondBtn" onClick={() => {
+              startMusic()
+              playClick()
+              window.open('/resume.pdf', '_blank')
+            }}>
+              <div className="textBtn">Resume</div>
             </div>
           </div>
         </div>

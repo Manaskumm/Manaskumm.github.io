@@ -7,6 +7,12 @@ export function Contact() {
                 <p><strong style={{ color: '#ffff00' }}>Email:</strong> manaskumm@gmail.com</p>
                 <p><strong style={{ color: '#ffff00' }}>Phone:</strong> 732-527-7053</p>
                 <p>
+                    <strong style={{ color: '#ffff00' }}>Portfolio:</strong>{' '}
+                    <a href="https://manaskumm.github.io" target="_blank" rel="noopener noreferrer" style={{ color: '#7bf', textDecoration: 'underline' }}>
+                        manaskumm.github.io
+                    </a>
+                </p>
+                <p>
                     <strong style={{ color: '#ffff00' }}>GitHub:</strong>{' '}
                     <a href="https://github.com/Manaskumm" target="_blank" rel="noopener noreferrer" style={{ color: '#7bf', textDecoration: 'underline' }}>
                         github.com/Manaskumm

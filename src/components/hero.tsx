@@ -33,7 +33,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Software Engineer & Student studying Computer Science and Economics at Rutgers University.
+          AI-native full-stack engineer and Rutgers student studying Computer Science and Economics.
         </motion.p>
 
         <motion.div
@@ -58,7 +58,7 @@ export function Hero() {
               <Github size={20} />
             </Link>
             <Link
-              href="https://linkedin.com/in/manaskumm"
+              href="https://linkedin.com/in/manas-kumm"
               target="_blank"
               className="p-4 rounded-full border border-border hover:bg-secondary transition-colors"
               aria-label="LinkedIn"
