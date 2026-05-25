@@ -32,7 +32,7 @@ const advancementsData: Advancement[] = [
         bullets: [
             "Pursuing a double major B.S in Computer Science and B.A in Economics.",
             "Cumulative GPA of 3.6 / 4.0.",
-            "Relevant Coursework: Calculus I, Calculus II, Linear Algebra, Intro to Computer Science, Data Structures, Computer Architecture, Discrete I, Discrete II, Microeconomics, Macroeconomics, Econometrics"
+            "Relevant Coursework: Calculus I & II, Linear Algebra, Data Structures, Computer Architecture, Discrete I & II, Intro to Computer Science, Microeconomics, Macroeconomics, Econometrics"
         ],
         thumbnail: "/assets/images/rutgers.png?v=2"
     },
@@ -44,8 +44,8 @@ const advancementsData: Advancement[] = [
         date: "May 2026 - Present",
         location: "Remote",
         bullets: [
-            "Sourced and qualified leads for custom software projects through cold outreach to local businesses, supporting client acquisition for a growing development agency.",
-            "Delivered full-stack web applications for clients as a contracted engineer, owning projects end-to-end from scoping through deployment.",
+            "Sourced and qualified leads for custom software projects by cold outreach to local businesses, driving client acquisition for a growing dev agency.",
+            "Delivered full-stack web applications for clients as a contracted engineer, owning projects end-to-end from scoping to deployment.",
             "Built AI-powered automation pipelines integrating NLP-based lead scoring and RAG-driven personalized outreach using Apollo and Clay."
         ],
         thumbnail: "/assets/images/eta-dev.png?v=2"
@@ -61,7 +61,7 @@ const advancementsData: Advancement[] = [
             "Built and maintained full-stack features using React and Next.js, leveraging AI coding assistants to accelerate development across frontend UI components and backend API endpoints.",
             "Designed and implemented responsive, accessible web pages that improved cross-device user experience.",
             "Integrated RESTful APIs to enable dynamic data rendering and seamless client-server communication.",
-            "Collaborated with team members in an agile environment, participating in code reviews and iterative development cycles to ship features on schedule."
+            "Collaborated in an agile environment, participating in code reviews and iterative development cycles to ship features on schedule."
         ],
         thumbnail: "/assets/images/langpal.png?v=2"
     },

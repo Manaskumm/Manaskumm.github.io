@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface Project {
     title: string;
@@ -21,6 +21,20 @@ interface ProjectsProps {
 
 const initialProjects: Project[] = [
     {
+        title: "Malware Sandbox & Behavioral Analysis Engine",
+        date: "May 2025 - Present",
+        stack: "Python, FastAPI, ptrace, Scapy, YARA, Frida, Docker",
+        gameMode: "Hardcore Mode",
+        version: "Python 3.11",
+        thumbnail: "/assets/images/malware-sandbox.png?v=1",
+        bullets: [
+            "Engineered a full-stack malware analysis platform with a FastAPI backend orchestrating ephemeral cloud VM runners (GitHub Actions) and a JS frontend with drag-and-drop upload, live scan progress, and a tabbed report dashboard.",
+            "Built a Linux syscall monitor via ptrace/PTRACE_GETREGS to decode every syscall, and implemented Windows API hooking via Frida injecting instrumentation agents into ntdll.dll and kernelbase.dll exports.",
+            "Developed a PE/ELF static analysis engine using pefile and pyelftools with YARA scanning for UPX, shellcode stubs, and RAT indicators; designed a weighted scoring engine classifying binaries as CLEAN / SUSPICIOUS / LIKELY_MALICIOUS.",
+        ],
+        link: "https://manas-sandbox.onrender.com/",
+    },
+    {
         title: "Venture AI",
         date: "Feb 2026 - Mar 2026",
         stack: "Next.js, React, TypeScript, Groq, Gemini, Prisma, PostgreSQL, Clerk, SerpAPI",
@@ -33,7 +47,7 @@ const initialProjects: Project[] = [
             "Built a relational data layer with Prisma and PostgreSQL to persist itineraries, secured with Clerk auth, while using React Context to manage traveler profiles, budgets, dietary needs, and accessibility preferences.",
             "Developed a polished UI with Tailwind CSS, Framer Motion micro-animations, and interactive 3D WebGL globe visualizations via Cobe.",
         ],
-        link: "https://github.com/Manaskumm",
+        link: "https://venture-blue-beta.vercel.app/",
     },
     {
         title: "Gmail Phishing Link Scanner",
@@ -76,6 +90,93 @@ const initialProjects: Project[] = [
         link: "https://github.com/Manaskumm/Text-Animator",
     },
 ];
+
+function BouncingTextThumbnail() {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [pos, setPos] = useState({ x: 10, y: 15 });
+    const dirRef = useRef({ dx: 2, dy: 1.5 });
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (!containerRef.current) return;
+            const container = containerRef.current;
+            const width = container.clientWidth || 112; // accounting for borders/padding (120px - 8px border)
+            const height = container.clientHeight || 112;
+            
+            // "JAVA" with 9px font is ~32px wide and 10px high
+            const textWidth = 32;
+            const textHeight = 10;
+
+            setPos((prev) => {
+                let nextX = prev.x + dirRef.current.dx;
+                let nextY = prev.y + dirRef.current.dy;
+
+                // Bounce X
+                if (nextX <= 0) {
+                    nextX = 0;
+                    dirRef.current.dx = Math.abs(dirRef.current.dx);
+                } else if (nextX + textWidth >= width) {
+                    nextX = width - textWidth;
+                    dirRef.current.dx = -Math.abs(dirRef.current.dx);
+                }
+
+                // Bounce Y
+                if (nextY <= 0) {
+                    nextY = 0;
+                    dirRef.current.dy = Math.abs(dirRef.current.dy);
+                } else if (nextY + textHeight >= height) {
+                    nextY = height - textHeight;
+                    dirRef.current.dy = -Math.abs(dirRef.current.dy);
+                }
+
+                return { x: nextX, y: nextY };
+            });
+        }, 100); // 10 FPS for a low-framerate blocky Minecraft feel!
+
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <div
+            ref={containerRef}
+            style={{
+                width: "100%",
+                height: "100%",
+                position: "relative",
+                background: "#2c2c2c url('https://i.servimg.com/u/f48/18/06/99/75/bgbtn10.png')",
+                backgroundSize: "cover",
+                overflow: "hidden",
+            }}
+        >
+            <div
+                style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    background: "rgba(0, 0, 0, 0.45)",
+                }}
+            />
+            <div
+                style={{
+                    position: "absolute",
+                    left: `${pos.x}px`,
+                    top: `${pos.y}px`,
+                    fontFamily: "'Minecraftia', monospace",
+                    fontSize: "9px",
+                    fontWeight: "bold",
+                    color: "#ffff55",
+                    textShadow: "1px 1px #000",
+                    whiteSpace: "nowrap",
+                    userSelect: "none",
+                }}
+            >
+                JAVA
+            </div>
+        </div>
+    );
+}
 
 export function Projects({ onBack, playClick, startMusic }: ProjectsProps) {
     const [projectList, setProjectList] = useState<Project[]>(initialProjects);
@@ -241,7 +342,11 @@ export function Projects({ onBack, playClick, startMusic }: ProjectsProps) {
                                     onDoubleClick={() => handleDoubleClick(index)}
                                 >
                                     <div className="selectWorldThumbnail">
-                                        <img src={project.thumbnail} alt={project.title} />
+                                        {project.title === "Text Animator" ? (
+                                            <BouncingTextThumbnail />
+                                        ) : (
+                                            <img src={project.thumbnail} alt={project.title} />
+                                        )}
                                     </div>
                                     <div className="selectWorldItemText">
                                         <div className="selectWorldItemTitle">{project.title}</div>

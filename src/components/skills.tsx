@@ -7,7 +7,7 @@ const skillCategories = [
     },
     {
         title: "Technologies",
-        skills: ["Git", "React", "React Native", "Next.js", "Node.js", "TypeScript", "SQL/PostgreSQL", "Prisma", "Linux", "Supabase", "Vercel", "Framer Motion"],
+        skills: ["Git", "React", "React Native", "Next.js", "Node.js", "TypeScript", "SQL/PostgreSQL", "Prisma", "Linux", "Supabase", "Vercel", "Framer Motion", "Scapy", "pefile", "YARA"],
     },
     {
         title: "AI & Data",
