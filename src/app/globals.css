@@ -240,3 +240,412 @@ body {
     @apply border-border;
   }
 }
+
+/* ============================================ */
+/* MINECRAFT SELECT WORLD SCREEN REDESIGN       */
+/* ============================================ */
+
+/* Full screen structure */
+.selectWorldScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.servimg.com/u/f48/18/06/99/75/fr-min10.jpg') repeat-x center center;
+  background-size: cover;
+  animation: background-image-animation 240s linear infinite;
+  color: #fff;
+  font-family: 'Minecraftia', monospace;
+  overflow: hidden;
+}
+
+/* Header styling */
+.selectWorldHeader {
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 4px solid #000;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 60;
+  padding-top: 10px;
+}
+
+.selectWorldTitle {
+  font-size: 18px;
+  color: #ffffff;
+  text-shadow: 2px 2px #3f3f3f;
+  margin-bottom: 12px;
+}
+
+/* Search input field */
+.minecraftSearchBox {
+  width: 100%;
+  max-width: 400px;
+  background-color: #000000;
+  border: 2px solid #a0a0a0;
+  color: #ffffff;
+  font-family: 'Minecraftia', monospace;
+  font-size: 14px;
+  padding: 6px 10px;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+.minecraftSearchBox:focus {
+  border-color: #ffffff;
+}
+
+.minecraftSearchBox::placeholder {
+  color: #555555;
+}
+
+/* Scrollable middle list area */
+.selectWorldListContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 0;
+  background: rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 55;
+  box-shadow: inset 0 8px 12px -6px rgba(0,0,0,0.8), inset 0 -8px 12px -6px rgba(0,0,0,0.8);
+}
+
+/* Custom Scrollbar for Minecraft aesthetic */
+.selectWorldListContainer::-webkit-scrollbar {
+  width: 12px;
+}
+
+.selectWorldListContainer::-webkit-scrollbar-track {
+  background: #000000;
+  border-left: 2px solid #555555;
+}
+
+.selectWorldListContainer::-webkit-scrollbar-thumb {
+  background: #8c8c8c;
+  border: 2px solid #555555;
+  box-shadow: inset -2px -2px #00000055, inset 2px 2px #ffffff66;
+}
+
+.selectWorldListContainer::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+/* Individual world/project list item */
+.selectWorldItem {
+  width: 95%;
+  max-width: 960px;
+  margin: 0 auto 8px auto;
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  background: transparent;
+  transition: background 0.1s ease;
+  user-select: none;
+}
+
+.selectWorldItem:hover {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.selectWorldItem.selected {
+  border: 2px solid #ffffff;
+  outline: 2px solid #000000;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Thumbnail image on the left */
+.selectWorldThumbnail {
+  width: 120px;
+  height: 120px;
+  background-color: #0c0c0c;
+  border: 4px solid #555555;
+  margin-right: 18px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.selectWorldThumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+/* Text detailing the project/world */
+.selectWorldItemText {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.selectWorldItemTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px #000000;
+  margin-bottom: 6px;
+}
+
+.selectWorldItem.selected .selectWorldItemTitle {
+  color: #ffff55; /* Minecraft gold highlight for selected titles */
+}
+
+.selectWorldItemDate {
+  font-size: 13px;
+  color: #808080;
+  text-shadow: 1px 1px #000000;
+  margin-bottom: 4px;
+}
+
+.selectWorldItemMode {
+  font-size: 13px;
+  color: #808080;
+  text-shadow: 1px 1px #000000;
+  line-height: 1.4;
+}
+
+/* Footer layout */
+.selectWorldFooter {
+  height: 130px;
+  border-top: 4px solid #000;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+  position: relative;
+  gap: 8px;
+  padding: 10px 0;
+}
+
+/* Row 1 button layout (2 columns) */
+.selectWorldBtnRow1 {
+  display: flex;
+  gap: 12px;
+  width: 90%;
+  max-width: 620px;
+  justify-content: center;
+}
+
+.selectWorldBtnRow1 .mainBtn {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* Row 2 button layout (4 columns) */
+.selectWorldBtnRow2 {
+  display: flex;
+  gap: 8px;
+  width: 90%;
+  max-width: 620px;
+  justify-content: center;
+}
+
+.selectWorldBtnRow2 .mainBtn {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* Disabled button appearance */
+.disabledBtn {
+  filter: brightness(0.4) grayscale(0.5);
+  cursor: not-allowed !important;
+  color: #7a7a7a !important;
+}
+
+.disabledBtn .textBtn {
+  color: #7a7a7a !important;
+  text-shadow: 1px 1px #000000 !important;
+}
+
+.disabledBtn:hover .textBtn {
+  background-color: transparent !important;
+  color: #7a7a7a !important;
+}
+
+/* Minecraft GUI Dialog Modals */
+.minecraftDialogOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.minecraftDialog {
+  width: 90%;
+  max-width: 500px;
+  background: #2b2b2b;
+  border: 4px solid #5c5c5c;
+  outline: 4px solid #000000;
+  box-shadow: inset -4px -4px #00000077, inset 4px 4px #ffffff22, 10px 10px 20px rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Minecraftia', monospace;
+  position: relative;
+}
+
+.minecraftDialogTitle {
+  font-size: 16px;
+  color: #ffff55;
+  text-shadow: 2px 2px #3f3f00;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.minecraftDialogContent {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #dddddd;
+  margin-bottom: 24px;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.minecraftDialogContent ul {
+  list-style-type: square;
+  padding-left: 20px;
+}
+
+.minecraftDialogContent li {
+  margin-bottom: 8px;
+}
+
+.minecraftDialogContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.minecraftDialogContent::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+.minecraftDialogContent::-webkit-scrollbar-thumb {
+  background: #555555;
+}
+
+/* Suggest Project form fields */
+.minecraftFormGroup {
+  width: 100%;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.minecraftFormLabel {
+  font-size: 11px;
+  color: #aaaaaa;
+}
+
+.minecraftFormInput {
+  background: #000000;
+  border: 2px solid #555555;
+  color: #ffffff;
+  font-family: 'Minecraftia', monospace;
+  font-size: 12px;
+  padding: 6px;
+  outline: none;
+}
+
+.minecraftFormInput:focus {
+  border-color: #ffffff;
+}
+
+.minecraftFormTextarea {
+  background: #000000;
+  border: 2px solid #555555;
+  color: #ffffff;
+  font-family: 'Minecraftia', monospace;
+  font-size: 12px;
+  padding: 6px;
+  outline: none;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.minecraftFormTextarea:focus {
+  border-color: #ffffff;
+}
+
+/* Play button overlay on hover */
+.playButtonOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 10;
+}
+
+.selectWorldItem:hover .playButtonOverlay {
+  opacity: 1;
+}
+
+.pixelPlayIcon {
+  width: 44px;
+  height: 44px;
+  background: #999 url('https://i48.servimg.com/u/f48/18/06/99/75/bgbtn10.png');
+  background-size: cover;
+  border: 2px solid #000;
+  box-shadow: inset -4px -4px #0006, inset 4px 4px #FFF7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  image-rendering: pixelated;
+  transition: transform 0.1s ease;
+}
+
+.pixelPlayIcon:hover {
+  background-color: rgba(100, 100, 255, 0.45);
+  transform: scale(1.1);
+}
+
+.pixelPlayTriangle {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 16px solid #DDD;
+  margin-left: 6px;
+  filter: drop-shadow(2px 2px 0px #000);
+}
+
+.pixelPlayIcon:hover .pixelPlayTriangle {
+  border-left-color: #ffff7c;
+}
+

@@ -14,7 +14,6 @@ const splashTexts = [
   "AI-native engineer!",
   "Rutgers '28!",
   "CS + Econ!",
-  "Building Venture AI!",
   "Hello World!",
 ]
 
@@ -101,9 +100,9 @@ export default function Home() {
   const renderContent = () => {
     switch (menuState) {
       case 'about':
-        return <About />
+        return <About onBack={handleBack} playClick={playClick} startMusic={startMusic} />
       case 'projects':
-        return <Projects />
+        return <Projects onBack={handleBack} playClick={playClick} startMusic={startMusic} />
       case 'skills':
         return <Skills />
       case 'contact':
@@ -143,7 +142,11 @@ export default function Home() {
         </div>
       </div>
 
-      {menuState === 'main' ? (
+      {menuState === 'projects' ? (
+        <Projects onBack={handleBack} playClick={playClick} startMusic={startMusic} />
+      ) : menuState === 'about' ? (
+        <About onBack={handleBack} playClick={playClick} startMusic={startMusic} />
+      ) : menuState === 'main' ? (
         /* ====== MAIN MENU ====== */
         <div className="mainMenu">
           {/* Logo area - Minecraft-style logo image with true transparency */}
