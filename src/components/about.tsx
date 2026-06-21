@@ -48,7 +48,7 @@ const advancementsData: Advancement[] = [
             "Developed reproducible ML notebooks for classification, opportunity scoring, and semantic modeling that inform FlyRank's agentic organic growth platform.",
             "Collaborated with engineers on content intelligence and ranking models powering automated SEO, AEO, and multi-modal content production at scale.",
         ],
-        thumbnail: "/assets/images/flyrank.png?v=3"
+        thumbnail: "/assets/images/flyrank.png?v=4"
     },
     {
         id: "eta",
