@@ -12,6 +12,7 @@ const splashTexts = [
   "Available for hire!",
   "Full-stack developer!",
   "AI-native engineer!",
+  "ML Intern @ FlyRank!",
   "Rutgers '28!",
   "CS + Econ!",
   "Hello World!",
@@ -97,21 +98,6 @@ export default function Home() {
     }
   }
 
-  const renderContent = () => {
-    switch (menuState) {
-      case 'about':
-        return <About onBack={handleBack} playClick={playClick} startMusic={startMusic} />
-      case 'projects':
-        return <Projects onBack={handleBack} playClick={playClick} startMusic={startMusic} />
-      case 'skills':
-        return <Skills />
-      case 'contact':
-        return <Contact />
-      default:
-        return null
-    }
-  }
-
   return (
     <>
       {/* Click sound */}
@@ -146,19 +132,22 @@ export default function Home() {
         <Projects onBack={handleBack} playClick={playClick} startMusic={startMusic} />
       ) : menuState === 'about' ? (
         <About onBack={handleBack} playClick={playClick} startMusic={startMusic} />
+      ) : menuState === 'skills' ? (
+        <Skills onBack={handleBack} playClick={playClick} startMusic={startMusic} />
+      ) : menuState === 'contact' ? (
+        <Contact onBack={handleBack} playClick={playClick} startMusic={startMusic} />
       ) : menuState === 'main' ? (
         /* ====== MAIN MENU ====== */
         <div className="mainMenu">
           {/* Logo area - Minecraft-style logo image with true transparency */}
-          <div className="logo" style={{ flexDirection: 'column' }}>
+          <div className="logo">
             <img 
-              src="/assets/images/manas-logo.png" 
+              src="/assets/images/manas-logo.png?v=2" 
+              srcSet="/assets/images/manas-logo@2x.png?v=2 2x"
               alt="MANAS Portfolio" 
-              style={{
-                width: '100%',
-                maxWidth: '450px',
-                height: 'auto',
-              }}
+              className="logoImage"
+              width={734}
+              height={188}
             />
             <div className="subtitle">{splash}</div>
           </div>
@@ -197,22 +186,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      ) : (
-        /* ====== CONTENT OVERLAY ====== */
-        <div className="contentOverlay">
-          <h2 style={{ textTransform: 'capitalize' }}>{menuState}</h2>
-          {renderContent()}
-          <div className="backBtnWrapper">
-            <div
-              className="mainBtn"
-              onClick={handleBack}
-              style={{ width: '200px' }}
-            >
-              <div className="textBtn">Done</div>
-            </div>
-          </div>
-        </div>
-      )}
+      ) : null}
     </>
   )
 }

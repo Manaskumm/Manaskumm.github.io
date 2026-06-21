@@ -1,5 +1,11 @@
 "use client";
 
+interface SkillsProps {
+    onBack: () => void;
+    playClick: () => void;
+    startMusic: () => void;
+}
+
 const skillCategories = [
     {
         title: "Languages",
@@ -11,7 +17,7 @@ const skillCategories = [
     },
     {
         title: "AI & Data",
-        skills: ["Groq", "Gemini", "RAG", "NLP Lead Scoring", "SerpAPI", "Apollo", "Clay", "scikit-learn", "pandas", "matplotlib", "yfinance"],
+        skills: ["Groq", "Gemini", "RAG", "NLP Lead Scoring", "SerpAPI", "Apollo", "Clay", "scikit-learn", "pandas", "matplotlib", "yfinance", "sentence-transformers", "HDBSCAN"],
     },
     {
         title: "Activities",
@@ -19,31 +25,50 @@ const skillCategories = [
     },
 ];
 
-export function Skills() {
+export function Skills({ onBack, playClick, startMusic }: SkillsProps) {
     return (
-        <section id="skills">
-            {skillCategories.map((category, index) => (
-                <div key={index} style={{ marginBottom: '20px' }}>
-                    <h3 style={{ color: '#ffff00', marginBottom: '8px', textShadow: '1px 1px #3f3f00' }}>
-                        {category.title}
-                    </h3>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                        {category.skills.map((skill, sIndex) => (
-                            <span
-                                key={sIndex}
-                                style={{
-                                    background: 'rgba(255,255,255,0.1)',
-                                    border: '1px solid rgba(255,255,255,0.2)',
-                                    padding: '4px 10px',
-                                    fontSize: '12px',
-                                }}
-                            >
-                                {skill}
-                            </span>
-                        ))}
+        <div className="selectWorldScreen">
+            <div className="selectWorldHeader" style={{ height: "115px" }}>
+                <div className="selectWorldTitle" style={{ marginBottom: "10px" }}>Skills & Inventory</div>
+            </div>
+
+            <div className="selectWorldListContainer">
+                <div style={{ maxWidth: "760px", margin: "0 auto", padding: "30px 40px", color: "#FFF", fontSize: "14px", lineHeight: "1.9" }}>
+                    {skillCategories.map((category, index) => (
+                        <div key={index} style={{ marginBottom: "24px" }}>
+                            <h3 style={{ color: "#ffff55", marginBottom: "10px", textShadow: "2px 2px #3f3f00", fontSize: "16px" }}>
+                                {category.title}
+                            </h3>
+                            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                                {category.skills.map((skill, sIndex) => (
+                                    <span
+                                        key={sIndex}
+                                        style={{
+                                            background: "rgba(0, 0, 0, 0.45)",
+                                            border: "2px solid #555555",
+                                            boxShadow: "inset -2px -2px #00000055, inset 2px 2px #ffffff22",
+                                            padding: "6px 12px",
+                                            fontSize: "12px",
+                                            color: "#dddddd",
+                                            textShadow: "1px 1px #000000",
+                                        }}
+                                    >
+                                        {skill}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className="selectWorldFooter" style={{ height: "100px" }}>
+                <div className="selectWorldBtnRow1" style={{ maxWidth: "420px" }}>
+                    <div className="mainBtn" onClick={() => { startMusic(); playClick(); onBack(); }}>
+                        <div className="textBtn">Back</div>
                     </div>
                 </div>
-            ))}
-        </section>
+            </div>
+        </div>
     );
 }

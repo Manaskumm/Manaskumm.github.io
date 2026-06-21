@@ -11,6 +11,7 @@ interface Advancement {
     location: string;
     bullets: string[];
     thumbnail: string;
+    thumbnailClass?: string;
     extra?: string; // GPA or other quick details
 }
 
@@ -35,6 +36,21 @@ const advancementsData: Advancement[] = [
             "Relevant Coursework: Calculus I & II, Linear Algebra, Data Structures, Computer Architecture, Discrete I & II, Intro to Computer Science, Microeconomics, Macroeconomics, Econometrics"
         ],
         thumbnail: "/assets/images/rutgers.png?v=2"
+    },
+    {
+        id: "flyrank",
+        title: "FlyRank.ai",
+        category: "Experience",
+        subtitle: "Machine Learning Intern",
+        date: "July 2025 - Present",
+        location: "Remote",
+        bullets: [
+            "Built semantic search intelligence pipelines using sentence-transformers, scikit-learn, and clustering to surface content opportunities from messy search analytics data.",
+            "Developed reproducible ML notebooks for classification, opportunity scoring, and semantic modeling that inform FlyRank's agentic organic growth platform.",
+            "Collaborated with engineers on content intelligence and ranking models powering automated SEO, AEO, and multi-modal content production at scale.",
+        ],
+        thumbnail: "/assets/images/flyrank.png?v=2",
+        thumbnailClass: "thumbnailFullBleed",
     },
     {
         id: "eta",
@@ -192,7 +208,11 @@ export function About({ onBack, playClick, startMusic }: AboutProps) {
                                     onClick={() => handleSelect(index)}
                                 >
                                     <div className="selectWorldThumbnail">
-                                        <img src={adv.thumbnail} alt={adv.title} />
+                                        <img
+                                            src={adv.thumbnail}
+                                            alt={adv.title}
+                                            className={adv.thumbnailClass}
+                                        />
                                         {/* Pixelated Play Button Overlay on Hover */}
                                         <div className="playButtonOverlay">
                                             <div
@@ -223,7 +243,7 @@ export function About({ onBack, playClick, startMusic }: AboutProps) {
                                 Manas Kummarapurugu
                             </p>
                             <p style={{ marginBottom: "18px" }}>
-                                I am a passionate <strong>Computer Science & Economics</strong> student at <strong>Rutgers University</strong> (Class of '28) and an <strong>AI Native Full Stack Engineer</strong> focused on building intelligent software systems, cloud structures, and personalized automation pipelines.
+                                I am a passionate <strong>Computer Science & Economics</strong> student at <strong>Rutgers University</strong> (Class of '28), a <strong>Machine Learning Intern at FlyRank.ai</strong>, and an <strong>AI Native Full Stack Engineer</strong> focused on building intelligent software systems, cloud structures, and personalized automation pipelines.
                             </p>
                             <p style={{ marginBottom: "18px" }}>
                                 I specialize in delivering end-to-end full-stack web applications for clients, integrating NLP-based workflows, scraping frameworks, and advanced conversational LLM routing (using architectures like LLaMA and Gemini tool calling).
