@@ -11,7 +11,6 @@ interface Advancement {
     location: string;
     bullets: string[];
     thumbnail: string;
-    thumbnailClass?: string;
     extra?: string; // GPA or other quick details
 }
 
@@ -49,8 +48,7 @@ const advancementsData: Advancement[] = [
             "Developed reproducible ML notebooks for classification, opportunity scoring, and semantic modeling that inform FlyRank's agentic organic growth platform.",
             "Collaborated with engineers on content intelligence and ranking models powering automated SEO, AEO, and multi-modal content production at scale.",
         ],
-        thumbnail: "/assets/images/flyrank.png?v=2",
-        thumbnailClass: "thumbnailFullBleed",
+        thumbnail: "/assets/images/flyrank.png?v=3"
     },
     {
         id: "eta",
@@ -208,11 +206,7 @@ export function About({ onBack, playClick, startMusic }: AboutProps) {
                                     onClick={() => handleSelect(index)}
                                 >
                                     <div className="selectWorldThumbnail">
-                                        <img
-                                            src={adv.thumbnail}
-                                            alt={adv.title}
-                                            className={adv.thumbnailClass}
-                                        />
+                                        <img src={adv.thumbnail} alt={adv.title} />
                                         {/* Pixelated Play Button Overlay on Hover */}
                                         <div className="playButtonOverlay">
                                             <div

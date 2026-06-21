@@ -401,11 +401,7 @@ body {
   object-fit: cover;
   object-position: center;
   display: block;
-  image-rendering: auto;
-}
-
-.selectWorldThumbnail img.thumbnailFullBleed {
-  transform: scale(1.55);
+  image-rendering: pixelated;
 }
 
 /* Text detailing the project/world */
