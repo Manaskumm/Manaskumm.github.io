@@ -11,7 +11,7 @@ Run `npm run lint`, `npx tsc --noEmit`, and `npm run build` before deploying. Th
 ## Content and assets
 
 - All biographical facts, experience, project descriptions, skills and external URLs live in `src/lib/portfolio.ts`.
-- The five sections use shareable hash links: `#about`, `#experience`, `#projects`, `#skills`, `#contact`.
+- The original Minecraft title screen opens About Me, Projects, Skills and Contact. Education and experience are under About Me → Advancements. The original stylesheet, fonts, animated panorama and music behavior are preserved.
 - Final pixel artwork is stored in `public/assets/images/`. Generation prompts and logo-reference provenance are in [docs/IMAGE-PROMPTS.md](docs/IMAGE-PROMPTS.md).
 - The local Minecraft font's license is in `public/assets/fonts/LICENSE`.
 - The pre-update findings and outstanding verification limits are in [docs/AUDIT.md](docs/AUDIT.md).

@@ -26,15 +26,16 @@ The initial content update used the facts supplied in the task. The user subsequ
 | Resume | Working `/resume.pdf` and unused `/resume.docx` held old education and employment content. | Remove stale documents; serve the supplied PDF unchanged at `/manasresume.pdf` from both resume links. |
 | Metadata / docs | Generic old description, wrong `/portfolio/` URL and repository, incorrect framework version, Vercel-first instructions and generic template examples. | Correct identity metadata, canonical root domain, local development and GitHub Pages instructions. |
 
-## Visual and interaction findings
+## Visual design preservation
 
-- Preserve the Minecraft stone-letter logo, pixel font, landscape, beveled stone buttons, inventory tags, and world/advancement metaphors.
-- The live narrow-screen menu clipped its logo and splash and overlapped the resume control with the music toggle. Content panels had fixed dimensions and overflow risks. Replace with flexible, scrollable layouts and responsive cards.
-- Clickable divs and anchors without href were not keyboard accessible. Use semantic links/buttons, clear focus styles, a skip link, hash navigation and native browser Back/Forward.
-- Project descriptions existed in dormant dialogs and were difficult to discover. Show all approved descriptions directly on their cards.
-- Remove remote music downloads and their failure paths. Keep local Minecraft click effects as an optional, initially muted sound control.
-- Replace all three employer icons and all five project icons using the built-in AI image tool. Preserve recognizable employer symbols based on verified reference artwork. See [image prompts](IMAGE-PROMPTS.md).
-- Remove obsolete images, unused non-Minecraft template components and SVG assets, old favicon, and redundant logo sizes. Optimize new icons to 256 × 256 WebP; localize the existing Minecraft panorama, button texture and font with its license.
+At the user's request, the original design from commit 3ed98eb is restored. The initial redesign and its additional title-screen text were removed.
+
+- The entire original src/app/globals.css is restored without styling changes: original font face, font sizes, panorama motion, background positioning, stone buttons, spacing, list screens, and dialogs.
+- The original MANAS PNG logo and its 2x source are restored. There is no additional name heading or education text on the title screen.
+- The main menu is back to About Me, Projects, Skills, Contact, GitHub and Resume. Experience is under About Me → Advancements.
+- The original panorama animation and background music controls / track behavior are restored.
+- The original About, Skills, Contact, and Select Project layouts are retained. Their data uses the current resume and supplied dates; the requested pixel-art employer and project icons remain.
+- The title-screen source differs from its original only by removal of the stale FlyRank internship splash and the current resume URL.
 
 ## External link audit
 
@@ -83,7 +84,7 @@ The resume's Malware Sandbox title is used on the site. Its description is recon
 
 Remove unused animation, 3D, theme and UI dependencies. Update Next.js and its ESLint configuration to 16.4.6 and Sharp to 0.35.5; refresh compatible transitive packages. The final npm audit reports no high or critical findings. Eight moderate findings remain in the development-only ESLint / TypeScript ESLint / minimatch chain; npm's suggested automatic fix would downgrade the framework lint configuration to another major version, so it was not applied.
 
-## Local verification results
+## Initial content-update verification (before restoring the original visual design)
 
 - `npm run build`: passes, generates the static `out/` site.
 - `npm run lint`: passes.
@@ -100,3 +101,11 @@ Remove unused animation, 3D, theme and UI dependencies. Update Next.js and its E
 - Desktop and mobile screenshots and machine-readable check results are saved locally in the ignored `.audit/` directory.
 
 The portfolio checks above use the local production export. Publishing to `main` triggers the existing [GitHub Pages workflow](https://github.com/Manaskumm/Manaskumm.github.io/actions/workflows/deploy.yml), which records the current deployment status. The separate Venture and Malware Sandbox README updates are live on GitHub. The supplied resume is installed and reconciled. The supplied LinkedIn profile is behind a browser verification page; only the trading-agent repository URL remains unverified. The malware demo timed out and remains omitted.
+
+## Original-design restoration verification
+
+- Build, lint and TypeScript checks pass after restoring the original screens.
+- The original stylesheet and personal-logo files match the pre-update source.
+- Browser checks confirm Minecraftia is loaded at the original body size, the panorama uses the original 165-second animation and its position advances over time, and only one logo appears on the title screen.
+- About → Advancements shows the corrected education dates and all three internships, with the requested new pixel-art icons.
+- The current resume, project facts, repository links and separate README updates are retained.
