@@ -24,8 +24,8 @@ interface AboutProps {
 const advancementsData: Advancement[] = [
     {
         id: "rutgers", title: profile.university, category: "Education", subtitle: profile.degree,
-        date: profile.educationDates, location: "New Brunswick, NJ", extra: "GPA: 3.6 / 4.0",
-        bullets: [profile.degree, "Graduating a semester early in January 2028. GPA: 3.6 / 4.0.", "Relevant Coursework: " + coursework.join(", ")],
+        date: profile.educationDates, location: "New Brunswick, NJ", extra: "GPA: 3.6/4.0",
+        bullets: [profile.degree, "GPA: 3.6/4.0", "Relevant Coursework: " + coursework.join(", ")],
         thumbnail: "/assets/images/rutgers.webp"
     },
     ...experience.map((job): Advancement => ({
@@ -184,7 +184,7 @@ export function About({ onBack, playClick, startMusic }: AboutProps) {
                                 I have interned at Conquest Advisors, FlyRank AI, and Langpal, working on AI workflows, machine learning, and real-time language practice.
                             </p>
                             <p style={{ marginBottom: "20px", color: "#ffaa00", fontWeight: "bold" }}>
-                                Sep 2024 – Jan 2028 · Graduating a semester early · GPA 3.6
+                                Sep 2024–Jan 2028
                             </p>
                         </div>
                     )}
