@@ -1,49 +1,27 @@
-# Manas Kummarapurugu - Personal Portfolio Website
+# Manas Kummarapurugu — Portfolio
 
-This is the repository for my personal portfolio website, engineered to elegantly display my software engineering projects, technical skills, and background. 
+Minecraft-themed portfolio at [manaskumm.github.io](https://manaskumm.github.io/), built with Next.js 16, React 19, TypeScript and Tailwind CSS. GitHub Pages serves the static export.
 
-🔗 **Live Website:** [https://manaskumm.github.io/portfolio/](https://manaskumm.github.io/portfolio/) *(or any deployed domain)*
+## Local development
 
-## 🚀 Built With
-- **[Next.js 15](https://nextjs.org/)** & **[React 19](https://react.dev/)**
-- **[TypeScript](https://www.typescriptlang.org/)**
-- **[Tailwind CSS](https://tailwindcss.com/)**
-- **[Framer Motion](https://www.framer.com/motion/)** (for premium scroll/micro animations)
-- **[Lucide Icons](https://lucide.dev/)**
+Use Node.js 22 and npm. Run `npm ci`, then `npm run dev`, and open [localhost:3000](http://localhost:3000).
 
-## ✨ Features
-- **Dynamic Backgrounds & Custom Animations**: Utilizes fully custom Bezier curves and SVG `framer-motion` morphs to deliver a vivid aesthetic experience.
-- **Project Showcase**: Employs interactive, non-color-changing grid windows presenting real-world capabilities (Chrome Extensions, ML Models, Interactive UI tools).
-- **Responsive Layout**: Designed specifically across Mobile, Tablet, and Desktop tiers yielding seamless flow transitions everywhere.
-- **Client-side Form Integrity**: Features a `mailto:` forwarding bridge optimized directly to reliably receive form inquiries instantly.
+Run `npm run lint`, `npx tsc --noEmit`, and `npm run build` before deploying. The production files are written to `out/`; use a static server to preview that directory. `next start` is not supported for an exported site.
 
-## 🛠 Getting Started
+## Content and assets
 
-### Prerequisites
+- All biographical facts, experience, project descriptions, skills and external URLs live in `src/lib/portfolio.ts`.
+- The five sections use shareable hash links: `#about`, `#experience`, `#projects`, `#skills`, `#contact`.
+- Final pixel artwork is stored in `public/assets/images/`. Generation prompts and logo-reference provenance are in [docs/IMAGE-PROMPTS.md](docs/IMAGE-PROMPTS.md).
+- The local Minecraft font's license is in `public/assets/fonts/LICENSE`.
+- The pre-update findings and outstanding verification limits are in [docs/AUDIT.md](docs/AUDIT.md).
 
-Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
+## Current resume
 
-### Installation & Local Development
+The supplied `manasresume__.pdf` is served unchanged at `public/manasresume.pdf`. Both resume links point to `/manasresume.pdf`. The older PDF and DOCX were removed.
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Manaskumm/website.git
-   cd website
-   ```
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-3. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
-   Open [http://localhost:3000](http://localhost:3000) with your browser to see the outcome.
+Site wording follows the supplied resume, while the education and internship dates follow the user's explicit timeline. The PDF itself retains its original dates. Replace this file with any future revision and re-run the build and browser checks.
 
-## 👨‍💻 Author
+## Deployment
 
-**Manas Kummarapurugu**
-* Rutgers University (Class of 2028), B.S Computer Science & B.A Economics.
-
-* [LinkedIn](https://www.linkedin.com/in/manas-kumm/)
-* [GitHub](https://github.com/Manaskumm)
+See [DEPLOYMENT.md](DEPLOYMENT.md). The existing GitHub Actions workflow deploys `out/` when changes reach `main`.
