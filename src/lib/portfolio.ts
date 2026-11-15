@@ -70,7 +70,7 @@ export const projects = [
   },
   {
     id: 'trading-agent', title: 'Autonomous AI Trading Agent', period: 'In progress', image: 'trading-agent.webp',
-    stack: ['MCP', 'Cursor'], description: 'An autonomous AI trading agent built with MCP tooling in Cursor.',
+    stack: ['Claude', 'Robinhood MCP'], description: 'An autonomous trading agent built with Claude and Robinhood MCP.',
     details: 'Includes a kill switch, position sizing, and trade logging.', link: null,
   },
   {
